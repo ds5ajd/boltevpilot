@@ -1,7 +1,7 @@
 from selfdrive.thermald.power_monitoring import VBATT_PAUSE_CHARGING
 from selfdrive.hardware import HARDWARE,EON
-BATT_PERC_MIN = 40
-BATT_PERC_MAX = 60
+BATT_PERC_MIN = 70
+BATT_PERC_MAX = 90
 
 def setEONChargingStatus(car_voltage_mV, batteryPercent) :
     if EON:
