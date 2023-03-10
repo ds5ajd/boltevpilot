@@ -392,6 +392,16 @@ def thermald_thread(end_event, hw_queue):
     if power_monitor.should_shutdown(peripheralState, onroad_conditions["ignition"], in_car, off_ts, started_seen):
       cloudlog.warning(f"shutting device down, offroad since {off_ts}")
       params.put_bool("DoShutdown", True)
+      
+          # dp - auto shutdown
+    if off_ts is not None:
+      shutdown_sec = 600
+      sec_now = sec_since_boot() - off_ts
+      if (shutdown_sec - 5) < sec_now:
+        msg.deviceState.chargingDisabled = True
+      if shutdown_sec < sec_now:
+        time.sleep(5)
+        HARDWARE.shutdown()
 
     msg.deviceState.chargingError = current_filter.x > 0. and msg.deviceState.batteryPercent < 90  # if current is positive, then battery is being discharged
     msg.deviceState.started = started_ts is not None
