@@ -18,11 +18,11 @@ LongPressed = False
 #          model predictions above this speed can be unpredictable
 # kph
 V_CRUISE_MAX = 145
-V_CRUISE_MIN = 30
+V_CRUISE_MIN = 15 #30
 V_CRUISE_PADDLE_MIN = 15
 V_CRUISE_DELTA_MI = 5 * CV.MPH_TO_KPH
 V_CRUISE_DELTA_KM = 10
-V_CRUISE_ENABLE_MIN = 30
+V_CRUISE_ENABLE_MIN = 50
 
 LAT_MPC_N = 16
 LON_MPC_N = 32
