@@ -479,7 +479,7 @@ class Controls:
     #  else:
     #    self.v_cruise_kph = 0
 
-    # if CS.adaptiveCruise:
+    if CS.adaptiveCruise:
       self.v_cruise_kph = update_v_cruise(self.v_cruise_kph, CS.buttonEvents, self.button_timers, self.enabled, self.is_metric)
       if CS.regenPressed:
         self.v_cruise_kph = update_v_cruise_regen(CS.vEgo, self.v_cruise_kph, CS.regenPressed, self.enabled)
