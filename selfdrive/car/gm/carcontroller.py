@@ -100,12 +100,13 @@ class CarController():
       self.comma_pedal = 0.0 # Must be set by zero, or cannot re-acceling when stopped. - jc01rho.
 
     elif CS.adaptive_Cruise:
-      ConstAccel = interp(CS.out.vEgo, [18.0 * CV.KPH_TO_MS, 100.0 * CV.KPH_TO_MS], [0.15, 0.2125])
-      if (actuators.accel - ConstAccel) < 0 : #accelFomula = ((actuators.accel - ConstAccel) / 8.0)
-        accelFomula = ((actuators.accel - ConstAccel) / 6.0) #accelFomula = ((actuators.accel - ConstAccel) / 8.0)
-      else : #accelFomula = ((actuators.accel - ConstAccel) / 8.0)
-        accelFomula = ((actuators.accel - ConstAccel) / 8.0)
-        accelFomula = round(accelFomula+0.00001, 4)
+      ConstAccel = interp(CS.out.vEgo, [8.0 * CV.KPH_TO_MS, 18.0 * CV.KPH_TO_MS, 100.0 * CV.KPH_TO_MS], [0.11, 0.15, 0.2125]) #0.15, 0.2125
+      accelFomula = ((actuators.accel - ConstAccel) / 8.0)
+      accelFomula = round(accelFomula+0.00001, 4)
+      #if (actuators.accel - ConstAccel) < 0 : #accelFomula = ((actuators.accel - ConstAccel) / 8.0)
+        #accelFomula = ((actuators.accel - ConstAccel) / 6.0) #accelFomula = ((actuators.accel - ConstAccel) / 8.0)
+      #else : #accelFomula = ((actuators.accel - ConstAccel) / 8.0)
+
       
       self.comma_pedal_original = clip(interp(actuators.accel, [-0.875, 0.00, 0.30], [0.0, ConstAccel, ConstAccel+0.0250]) + accelFomula, 0., 1.)
            
@@ -136,7 +137,7 @@ class CarController():
             self.stoppingStateTimeWindowsActiveCounter += 1
             actuators.stoppingStateTimeWindowsActiveCounter = self.stoppingStateTimeWindowsActiveCounter
             if self.stoppingStateTimeWindowsActiveCounter > 0 :
-              actuators.pedalStartingAdder = interp(CS.out.vEgo, [0.0, 5.0 * CV.KPH_TO_MS ,12.5 * CV.KPH_TO_MS , 25.0 * CV.KPH_TO_MS], [0.1750,0.2000, 0.1750, 0.025])
+              actuators.pedalStartingAdder = interp(CS.out.vEgo, [0.0, 5.0 * CV.KPH_TO_MS ,12.5 * CV.KPH_TO_MS , 25.0 * CV.KPH_TO_MS], [0.1250,0.1550, 0.1750, 0.025])
               if d > 0:
                 actuators.pedalDistanceAdder = interp(d, [1,6,8, 9.5, 15, 30], [-1.0250 ,-0.5000 ,-0.0525 ,  -0.0100 ,0.0175,0.1000])
               actuators.pedalAdderFinal = (actuators.pedalStartingAdder + actuators.pedalDistanceAdder)
