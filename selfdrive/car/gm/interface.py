@@ -34,8 +34,8 @@ class CarInterface(CarInterfaceBase):
     params = CarControllerParams(CP)
     v_current_kph = current_speed * CV.MS_TO_KPH
     # return params.ACCEL_MIN, params.ACCEL_MAX
-    accel_max_bp = [10., 20., 50.] #[10., 20., 50.]
-    accel_max_v = [0.8, 1.0, 0.95] #[0.8, 1.0, 1.0]
+    accel_max_bp = [10., 20., 35., 50., 70., 80.] #[10., 20., 50.]
+    accel_max_v = [0.8, 1.0, 0.8, 0.85, 1.0, 0.95] #[0.8, 1.0, 1.0]
 
     return params.ACCEL_MIN, interp(v_current_kph, accel_max_bp, accel_max_v)
 
@@ -178,17 +178,17 @@ class CarInterface(CarInterfaceBase):
                                                                          tire_stiffness_factor=tire_stiffness_factor)
 
     # longitudinal
-    ret.longitudinalTuning.kpBP = [0., 30.0 * CV.KPH_TO_MS, 80. * CV.KPH_TO_MS] #[0., 18.0 * CV.KPH_TO_MS, 80. * CV.KPH_TO_MS]
-    ret.longitudinalTuning.kpV = [1.16, 1.0, 0.76] #[1.20, 1.0, 0.76], [1.16, 1.1, 0.76]=>good
-    ret.longitudinalTuning.kiBP = [0., 30.0 * CV.KPH_TO_MS, 80. * CV.KPH_TO_MS] #[0., 18.0 * CV.KPH_TO_MS, 80. * CV.KPH_TO_MS]
-    ret.longitudinalTuning.kiV = [0.135, 0.130, 0.115] #0.140,0.125,0.115, [0.135, 0.130, 0.115]=> good
+    ret.longitudinalTuning.kpBP = [[0., 18.0 * CV.KPH_TO_MS, 30.0 * CV.KPH_TO_MS, 80.0 * CV.KPH_TO_MS] #[0., 18.0 * CV.KPH_TO_MS, 80. * CV.KPH_TO_MS]
+    ret.longitudinalTuning.kpV = [1.18, 1.16, 1.0, 0.76] #[1.20, 1.0, 0.76], [1.16, 1.1, 0.76]=>good
+    ret.longitudinalTuning.kiBP = [0., 18.0 * CV.KPH_TO_MS, 30.0 * CV.KPH_TO_MS, 80.0 * CV.KPH_TO_MS] #[0., 18.0 * CV.KPH_TO_MS, 80. * CV.KPH_TO_MS]
+    ret.longitudinalTuning.kiV = [0.135, 0.135, 0.125, 0.115] #0.140,0.125,0.115, [0.135, 0.130, 0.115]=> good
      
     ret.longitudinalTuning.deadzoneBP = [0., 30.*CV.KPH_TO_MS]
     ret.longitudinalTuning.deadzoneV = [0., 0.10]
-    ret.longitudinalActuatorDelayLowerBound = 0.12 #0.12
-    ret.longitudinalActuatorDelayUpperBound = 0.15 #0.15
+    ret.longitudinalActuatorDelayLowerBound = 0.13 #0.12
+    ret.longitudinalActuatorDelayUpperBound = 0.25 #0.15
     
-    ret.stopAccel = -2.1
+    ret.stopAccel = -2.5
     ret.stoppingDecelRate = 4.0
     ret.vEgoStopping = 0.5
     ret.vEgoStarting = 0.5
