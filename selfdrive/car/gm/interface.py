@@ -34,7 +34,7 @@ class CarInterface(CarInterfaceBase):
     params = CarControllerParams(CP)
     v_current_kph = current_speed * CV.MS_TO_KPH
     # return params.ACCEL_MIN, params.ACCEL_MAX
-    accel_max_bp = [8., 18., 30., 50., 70., 80.] #[10., 20., 50.] => [10., 20., 35., 50., 70., 80.](Good)
+    accel_max_bp = [10., 20., 35., 50., 70., 80.] #[10., 20., 50.] => [10., 20., 35., 50., 70., 80.](Good)
     accel_max_v = [0.8, 0.95, 0.8, 0.85, 1.0, 0.95] #[0.8, 1.0, 1.0] => [0.8, 1.0, 0.95] => [0.8, 0.95, 0.8, 0.85, 1.0, 0.95](Good)
 
     return params.ACCEL_MIN, interp(v_current_kph, accel_max_bp, accel_max_v)
@@ -179,9 +179,9 @@ class CarInterface(CarInterfaceBase):
 
     # longitudinal
     ret.longitudinalTuning.kpBP = [0., 18.0 * CV.KPH_TO_MS, 30.0 * CV.KPH_TO_MS, 80.0 * CV.KPH_TO_MS] #[0., 18.0 * CV.KPH_TO_MS, 80. * CV.KPH_TO_MS]
-    ret.longitudinalTuning.kpV = [1.16, 1.16, 1.0, 0.76] #[1.20, 1.0, 0.76], [1.16, 1.1, 0.76]=>good
+    ret.longitudinalTuning.kpV = [1.18, 1.16, 1.0, 0.76] #[1.20, 1.0, 0.76], [1.16, 1.1, 0.76]=>good
     ret.longitudinalTuning.kiBP = [0., 18.0 * CV.KPH_TO_MS, 30.0 * CV.KPH_TO_MS, 80.0 * CV.KPH_TO_MS] #[0., 18.0 * CV.KPH_TO_MS, 80. * CV.KPH_TO_MS]
-    ret.longitudinalTuning.kiV = [0.135, 0.137, 0.127, 0.115] #0.140,0.125,0.115, [0.135, 0.130, 0.115]=> good
+    ret.longitudinalTuning.kiV = [0.140, 0.137, 0.127, 0.115] #0.140,0.125,0.115, [0.135, 0.130, 0.115]=> good
      
     ret.longitudinalTuning.deadzoneBP = [0., 30.*CV.KPH_TO_MS]
     ret.longitudinalTuning.deadzoneV = [0., 0.10]
