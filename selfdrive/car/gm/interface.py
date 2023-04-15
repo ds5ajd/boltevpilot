@@ -35,7 +35,7 @@ class CarInterface(CarInterfaceBase):
     v_current_kph = current_speed * CV.MS_TO_KPH
     # return params.ACCEL_MIN, params.ACCEL_MAX
     accel_max_bp = [10., 20., 35., 50., 70., 80.]
-    accel_max_v = [0.85, 0.95, 0.8, 0.85, 1.0, 0.95] #[0.8, 1.0, 0.95]
+    accel_max_v = [0.85, 1.0, 0.8, 0.82, 1.0, 0.95] #[0.8, 1.0, 0.95]
 
     return params.ACCEL_MIN, interp(v_current_kph, accel_max_bp, accel_max_v)
 
@@ -178,10 +178,10 @@ class CarInterface(CarInterfaceBase):
                                                                          tire_stiffness_factor=tire_stiffness_factor)
 
     # longitudinal
-    ret.longitudinalTuning.kpBP = [0., 18.0 * CV.KPH_TO_MS, 30.0 * CV.KPH_TO_MS, 80.0 * CV.KPH_TO_MS]
-    ret.longitudinalTuning.kpV = [1.16, 1.16, 1.0, 0.76] #[1.10, 1.0, 0.76]
-    ret.longitudinalTuning.kiBP = [0., 18.0 * CV.KPH_TO_MS, 30.0 * CV.KPH_TO_MS, 80.0 * CV.KPH_TO_MS]
-    ret.longitudinalTuning.kiV = [0.135, 0.137, 0.127, 0.115] #[0.145, 0.125, 0.115]
+    ret.longitudinalTuning.kpBP = [0., 18.0 * CV.KPH_TO_MS, 40.0 * CV.KPH_TO_MS, 80.0 * CV.KPH_TO_MS]
+    ret.longitudinalTuning.kpV = [1.16, 1.18, 1.0, 0.76] #[1.10, 1.0, 0.76]
+    ret.longitudinalTuning.kiBP = [0., 18.0 * CV.KPH_TO_MS, 40.0 * CV.KPH_TO_MS, 80.0 * CV.KPH_TO_MS]
+    ret.longitudinalTuning.kiV = [0.135, 0.130, 0.127, 0.115] #[0.145, 0.125, 0.115]
     
     ret.longitudinalTuning.deadzoneBP = [0., 30.*CV.KPH_TO_MS]
     ret.longitudinalTuning.deadzoneV = [0., 0.10]
