@@ -102,7 +102,7 @@ class CarController():
     elif CS.adaptive_Cruise:
       ConstAccel = interp(CS.out.vEgo, [8.0 * CV.KPH_TO_MS, 18.0 * CV.KPH_TO_MS, 100.0 * CV.KPH_TO_MS], [0.11, 0.15, 0.2125])  #0.15, 0.2125
         #accelFomula = ((actuators.accel - ConstAccel) / 8.0)
-      if (actuators.accel - ConstAccel) < 0:
+      if (actuators.accel - ConstAccel) < 0 :
         accelFomula = ((actuators.accel - ConstAccel) / 5.5)
       else :
         accelFomula = ((actuators.accel - ConstAccel) / 8.0)
