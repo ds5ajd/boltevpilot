@@ -104,7 +104,7 @@ class CarController():
         #accelFomula = ((actuators.accel - ConstAccel) / 8.0)
       if (actuators.accel - ConstAccel) < 0:
         accelFomula = ((actuators.accel - ConstAccel) / 5.5)
-      else:
+      else :
         accelFomula = ((actuators.accel - ConstAccel) / 8.0)
         accelFomula = round(accelFomula+0.00001, 4)
 
