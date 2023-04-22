@@ -175,7 +175,7 @@ class CarController():
           self.comma_pedal = clip(self.comma_pedal, 0.0 , (self.pedalMaxValue -0.025))
 
       #braking logic
-      if actuators.accel < interp(CS.out.vEgo,[18.0* CV.KPH_TO_MS, 100.0* CV.KPH_TO_MS],[-0.15, -0.6]) : # ==> -0.15, -0.6
+      if actuators.accel < interp(CS.out.vEgo,[18.0* CV.KPH_TO_MS, 100.0* CV.KPH_TO_MS],[-0.17, -0.5]) : # ==> -0.16, -0.6
       #if actuators.accel < -0.15 :
         can_sends.append(gmcan.create_regen_paddle_command(self.packer_pt, CanBus.POWERTRAIN))
         actuators.regenPaddle = True #for icon
