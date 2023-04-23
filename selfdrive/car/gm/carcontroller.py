@@ -101,13 +101,13 @@ class CarController():
 
     elif CS.adaptive_Cruise:
       ConstAccel = interp(CS.out.vEgo, [8.0 * CV.KPH_TO_MS, 18.0 * CV.KPH_TO_MS, 100.0 * CV.KPH_TO_MS], [0.11, 0.15, 0.2125])  #0.15, 0.2125
+      accelFomula = ((actuators.accel - ConstAccel) / 8.0)
+      accelFomula = round(accelFomula+0.00001, 4)
+      
+      #if (actuators.accel - ConstAccel) < 0 : #accelFomula = ((actuators.accel - ConstAccel) / 8.0)
+        #accelFomula = ((actuators.accel - ConstAccel) / 5.5)
+      #else : 
         #accelFomula = ((actuators.accel - ConstAccel) / 8.0)
-      if (actuators.accel - ConstAccel) < 0 : #accelFomula = ((actuators.accel - ConstAccel) / 8.0)
-        accelFomula = ((actuators.accel - ConstAccel) / 5.5)
-      else : 
-        accelFomula = ((actuators.accel - ConstAccel) / 8.0)
-        accelFomula = round(accelFomula+0.00001, 4)
-
       
       self.comma_pedal_original = clip(interp(actuators.accel, [-0.875, 0.00, 0.30], [0.0, ConstAccel, ConstAccel+0.0250]) + accelFomula, 0., 1.)
            
@@ -138,7 +138,7 @@ class CarController():
             self.stoppingStateTimeWindowsActiveCounter += 1
             actuators.stoppingStateTimeWindowsActiveCounter = self.stoppingStateTimeWindowsActiveCounter
             if self.stoppingStateTimeWindowsActiveCounter > 0 :
-              actuators.pedalStartingAdder = interp(CS.out.vEgo, [0.0, 5.0 * CV.KPH_TO_MS ,12.5 * CV.KPH_TO_MS , 25.0 * CV.KPH_TO_MS], [0.1050, 0.1250, 0.1750, 0.025])
+              actuators.pedalStartingAdder = interp(CS.out.vEgo, [0.0, 5.0 * CV.KPH_TO_MS ,12.5 * CV.KPH_TO_MS , 25.0 * CV.KPH_TO_MS], [0.1250, 0.1150, 0.1750, 0.025])
                       #[0.1850,0.2275, 0.1750, 0.025] => [0.1750, 0.2000, 0.1750, 0.025] ==> [0.1250,0.1550, 0.1750, 0.025](Good)
               if d > 0:
                 actuators.pedalDistanceAdder = interp(d, [1,6,8, 9.5, 15, 30], [-1.0250 ,-0.5000 ,-0.0525 ,  -0.0100 ,0.0175,0.1000])
@@ -176,14 +176,14 @@ class CarController():
           self.comma_pedal = clip(self.comma_pedal, 0.0 , (self.pedalMaxValue -0.025))
 
       #braking logic
-      if actuators.accel < interp(CS.out.vEgo,[18.0* CV.KPH_TO_MS, 100.0* CV.KPH_TO_MS],[-0.17, -0.5]) : # ==> -0.16, -0.6
+      if actuators.accel < interp(CS.out.vEgo,[6.0* CV.KPH_TO_MS, 10.0* CV.KPH_TO_MS, 18.0* CV.KPH_TO_MS, 30.0* CV.KPH_TO_MS, 60.0* CV.KPH_TO_MS, 80.0* CV.KPH_TO_MS, 100.0* CV.KPH_TO_MS],[-0.7, -0.4, -0.2, -0.15, -0.15, -0.2, -0.4]) : #-0.16, -0.6
       #if actuators.accel < -0.15 :
         can_sends.append(gmcan.create_regen_paddle_command(self.packer_pt, CanBus.POWERTRAIN))
         actuators.regenPaddle = True #for icon
       elif controls.LoC.pid.f < - 0.95 :
         can_sends.append(gmcan.create_regen_paddle_command(self.packer_pt, CanBus.POWERTRAIN))
         actuators.regenPaddle = True #for icon
-        minMultipiler = interp(CS.out.vEgo, [20 * CV.KPH_TO_MS ,  30 * CV.KPH_TO_MS , 60 * CV.KPH_TO_MS ,120 * CV.KPH_TO_MS ], [0.850, 0.750, 0.625, 0.150])
+        minMultipiler = interp(CS.out.vEgo, [20 * CV.KPH_TO_MS ,  30 * CV.KPH_TO_MS , 60 * CV.KPH_TO_MS ,120 * CV.KPH_TO_MS ], [0.700, 0.750, 0.625, 0.150])
         self.comma_pedal *= interp(controls.LoC.pid.f, [-2.25 ,-2.0 , -1.5, -0.600], [0, 0.020, minMultipiler, 0.975])
       actuators.commaPedal = self.comma_pedal
     else:
