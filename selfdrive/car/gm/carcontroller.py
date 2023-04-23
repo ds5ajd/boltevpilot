@@ -183,7 +183,7 @@ class CarController():
       elif controls.LoC.pid.f < - 0.95 :
         can_sends.append(gmcan.create_regen_paddle_command(self.packer_pt, CanBus.POWERTRAIN))
         actuators.regenPaddle = True #for icon
-        minMultipiler = interp(CS.out.vEgo, [20 * CV.KPH_TO_MS ,  30 * CV.KPH_TO_MS , 60 * CV.KPH_TO_MS ,120 * CV.KPH_TO_MS ], [0.750, 0.750, 0.625, 0.150])
+        minMultipiler = interp(CS.out.vEgo, [20 * CV.KPH_TO_MS ,  30 * CV.KPH_TO_MS , 60 * CV.KPH_TO_MS ,120 * CV.KPH_TO_MS ], [0.700, 0.750, 0.625, 0.150])
         self.comma_pedal *= interp(controls.LoC.pid.f, [-2.25 ,-2.0 , -1.5, -0.600], [0, 0.020, minMultipiler, 0.975])
       actuators.commaPedal = self.comma_pedal
     else:
