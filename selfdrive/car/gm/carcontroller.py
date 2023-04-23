@@ -101,15 +101,14 @@ class CarController():
 
     elif CS.adaptive_Cruise:
       ConstAccel = interp(CS.out.vEgo, [8.0 * CV.KPH_TO_MS, 18.0 * CV.KPH_TO_MS, 100.0 * CV.KPH_TO_MS], [0.11, 0.15, 0.2125])  #0.15, 0.2125
-        accelFomula = ((actuators.accel - ConstAccel) / 8.0)
-        accelFomula = round(accelFomula+0.00001, 4)
+      accelFomula = ((actuators.accel - ConstAccel) / 8.0)
+      accelFomula = round(accelFomula+0.00001, 4)
 
       #if (actuators.accel - ConstAccel) < 0 :
         #accelFomula = ((actuators.accel - ConstAccel) / 6.0)
       #else :
         #accelFomula = ((actuators.accel - ConstAccel) / 8.0)
          
-
       self.comma_pedal_original = clip(interp(actuators.accel, [-0.875, 0.00, 0.30], [0.0, ConstAccel, ConstAccel+0.0250]) + accelFomula, 0., 1.)
            
       self.pedal_hyst_gap = interp(CS.out.vEgo, [40.0 * CV.KPH_TO_MS, 100.0 * CV.KPH_TO_MS], [0.01, 0.0055])
