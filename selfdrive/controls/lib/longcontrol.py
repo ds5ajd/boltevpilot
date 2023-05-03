@@ -34,8 +34,8 @@ def long_control_state_trans(CP, active, long_control_state, v_ego, v_target,
   starting_condition = v_target_future > CP.vEgoStarting and accelerating and not cruise_standstill
 
   # neokii
-  #if radar_state is not None and radar_state.leadOne is not None and radar_state.leadOne.status:
-    #starting_condition = starting_condition and radar_state.leadOne.vLead > CP.vEgoStarting
+  if radar_state is not None and radar_state.leadOne is not None and radar_state.leadOne.status:
+    starting_condition = starting_condition and radar_state.leadOne.vLead > CP.vEgoStarting
 
   if not active:
     long_control_state = LongCtrlState.off
