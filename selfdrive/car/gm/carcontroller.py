@@ -176,11 +176,11 @@ class CarController():
           self.comma_pedal = clip(self.comma_pedal, 0.0 , (self.pedalMaxValue -0.025))
 
       #braking logic
-      if actuators.accel < interp(CS.out.vEgo,[6.0* CV.KPH_TO_MS, 10.0* CV.KPH_TO_MS, 18.0* CV.KPH_TO_MS, 30.0* CV.KPH_TO_MS, 60.0* CV.KPH_TO_MS, 80.0* CV.KPH_TO_MS, 100.0* CV.KPH_TO_MS],[-0.7, -0.4, -0.2, -0.1, -0.1, -0.2, -0.4]) : #-0.16, -0.6
+      if actuators.accel < interp(CS.out.vEgo,[6.0* CV.KPH_TO_MS, 10.0* CV.KPH_TO_MS, 18.0* CV.KPH_TO_MS, 30.0* CV.KPH_TO_MS, 60.0* CV.KPH_TO_MS, 80.0* CV.KPH_TO_MS, 100.0* CV.KPH_TO_MS],[-0.7, -0.5, -0.5, -0.4, -0.1, -0.2, -0.3]) : #-0.16, -0.6
       #if actuators.accel < -0.15 :
         can_sends.append(gmcan.create_regen_paddle_command(self.packer_pt, CanBus.POWERTRAIN))
         actuators.regenPaddle = True #for icon
-      elif controls.LoC.pid.f < - 0.95 :
+      elif controls.LoC.pid.f < - 0.85 :
         can_sends.append(gmcan.create_regen_paddle_command(self.packer_pt, CanBus.POWERTRAIN))
         actuators.regenPaddle = True #for icon
         minMultipiler = interp(CS.out.vEgo, [20 * CV.KPH_TO_MS ,  30 * CV.KPH_TO_MS , 60 * CV.KPH_TO_MS ,120 * CV.KPH_TO_MS ], [0.850, 0.750, 0.625, 0.150])
