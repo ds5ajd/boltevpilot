@@ -188,7 +188,7 @@ class CarInterface(CarInterfaceBase):
     ret.longitudinalActuatorDelayLowerBound = 0.12 #0.13
     ret.longitudinalActuatorDelayUpperBound = 0.50 #0.45
     
-    ret.stopAccel = -2.5 #2.2
+    ret.stopAccel = -2.3 #2.2
     ret.stoppingDecelRate = 4.0
     ret.vEgoStopping = 1.1 #1.0
     ret.vEgoStarting = 0.28
