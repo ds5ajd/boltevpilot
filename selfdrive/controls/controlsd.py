@@ -487,7 +487,7 @@ class Controls:
     if CS.regenPressed:
         self.v_cruise_kph = update_v_cruise_regen(CS.vEgo, self.v_cruise_kph, CS.regenPressed, self.enabled)
         self.regenPressed = True
-      else :
+    else:
         self.regenPressed = False
     elif not CS.adaptiveCruise and CS.cruiseState.enabled:
       self.v_cruise_kph = 40
