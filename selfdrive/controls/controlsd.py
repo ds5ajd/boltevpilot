@@ -480,7 +480,7 @@ class Controls:
     #    self.v_cruise_kph = 0
 
       if CS.adaptiveCruise:
-      self.v_cruise_kph = update_v_cruise(self.v_cruise_kph, CS.buttonEvents, self.button_timers, self.enabled, self.is_metric)
+	self.v_cruise_kph = update_v_cruise(self.v_cruise_kph, CS.buttonEvents, self.button_timers, self.enabled, self.is_metric)
       if CS.gasPressed:
         if CS.vEgo*3.6 > self.v_cruise_kph:
           self.v_cruise_kph = CS.vEgo*3.6
