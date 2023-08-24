@@ -104,7 +104,6 @@ class CarController():
       accelFomula = ((actuators.accel - ConstAccel) / 8.0)
       accelFomula = round(accelFomula+0.00001, 4)
       
-      #ConstAccel = interp(CS.out.vEgo, [1.0 * CV.KPH_TO_MS, 5.0 * CV.KPH_TO_MS, 9.0 * CV.KPH_TO_MS, 18.0 * CV.KPH_TO_MS, 100.0 * CV.KPH_TO_MS], [0.05, 0.07, 0.12, 0.15, 0.2125])
       #if (actuators.accel - ConstAccel) < 0 : #accelFomula = ((actuators.accel - ConstAccel) / 8.0)
         #accelFomula = ((actuators.accel - ConstAccel) / 5.5)
       #else : 
