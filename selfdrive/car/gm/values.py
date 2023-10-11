@@ -6,7 +6,7 @@ Ecu = car.CarParams.Ecu
 
 class CarControllerParams():
 
-  STEER_STEP = 3  # control frames per command/ steer step 4(changed on 11Oct)
+  STEER_STEP = 3  # 4 control frames per command
   MIN_STEER_SPEED = 3.  # m/s
   NEAR_STOP_BRAKE_PHASE = 0.5  # m/s
 
