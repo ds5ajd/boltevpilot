@@ -6,7 +6,7 @@ Ecu = car.CarParams.Ecu
 
 class CarControllerParams():
 
-  STEER_STEP = 4  # control frames per command
+  STEER_STEP = 3  # control frames per command/ steer step 4(changed on 11Oct)
   MIN_STEER_SPEED = 3.  # m/s
   NEAR_STOP_BRAKE_PHASE = 0.5  # m/s
 
@@ -36,7 +36,7 @@ class CarControllerParams():
   # ACCEL_HYST_GAP = 0.02
   def __init__(self, CP):
     self.STEER_MAX = 300   # 409 is the max, 255 is stock
-    self.STEER_DELTA_UP = 8
+    self.STEER_DELTA_UP = 3
     self.STEER_DELTA_DOWN = 12
     self.STEER_DRIVER_ALLOWANCE = 50
     self.STEER_DRIVER_MULTIPLIER = 4
