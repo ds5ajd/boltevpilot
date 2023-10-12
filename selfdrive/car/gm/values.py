@@ -36,7 +36,7 @@ class CarControllerParams():
   # ACCEL_HYST_GAP = 0.02
   def __init__(self, CP):
     self.STEER_MAX = 300   # 409 is the max, 255 is stock
-    self.STEER_DELTA_UP = 4 #8 (changed 11Oct23)
+    self.STEER_DELTA_UP = 6 #8 (changed 11Oct23)
     self.STEER_DELTA_DOWN = 12
     self.STEER_DRIVER_ALLOWANCE = 50
     self.STEER_DRIVER_MULTIPLIER = 4
