@@ -100,7 +100,7 @@ class CarController():
       self.comma_pedal = 0.0 # Must be set by zero, or cannot re-acceling when stopped. - jc01rho.
 
     elif CS.adaptive_Cruise:
-      ConstAccel = interp(CS.out.vEgo, [0.5 * CV.KPH_TO_MS, 1.3 * CV.KPH_TO_MS, 3.0 * CV.KPH_TO_MS, 6.0 * CV.KPH_TO_MS, 9.0 * CV.KPH_TO_MS, 18.0 * CV.KPH_TO_MS, 85.0 * CV.KPH_TO_MS, 100.0 * CV.KPH_TO_MS], [0.02, 0.04, 0.05, 0.07, 0.11, 0.14, 0.18, 0.2025])  #0.15, 0.2125
+      ConstAccel = interp(CS.out.vEgo, [0.5 * CV.KPH_TO_MS, 1.3 * CV.KPH_TO_MS, 3.0 * CV.KPH_TO_MS, 6.0 * CV.KPH_TO_MS, 9.0 * CV.KPH_TO_MS, 18.0 * CV.KPH_TO_MS, 85.0 * CV.KPH_TO_MS, 100.0 * CV.KPH_TO_MS], [0.02, 0.04, 0.05, 0.07, 0.11, 0.14, 0.177, 0.2025])  #0.15, 0.2125
       accelFomula = ((actuators.accel - ConstAccel) / 8.0)
       accelFomula = round(accelFomula+0.00001, 4)
       
