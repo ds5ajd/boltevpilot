@@ -139,7 +139,7 @@ class Cluster():
       "vLead": float(lead_msg.v[0]),
       "vLeadK": float(lead_msg.v[0]),
       "aLeadK": float(lead_msg.a[0]), #"aLeadK": float(0),
-      "aLeadTau": _LEAD_ACCEL_TAU,
+      "aLeadTau": 0.3, #"aLeadTau": _LEAD_ACCEL_TAU,
       "fcw": False,
       "modelProb": float(lead_msg.prob),
       "radar": False,
