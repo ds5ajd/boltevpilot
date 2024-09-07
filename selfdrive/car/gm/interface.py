@@ -98,7 +98,7 @@ class CarInterface(CarInterfaceBase):
 
     ret.minSteerSpeed = 11 * CV.KPH_TO_MS
     ret.steerRateCost = 0.35 #0.35 def : 2.0
-    ret.steerActuatorDelay = 0.2 # 0.01 late def: 0.2 Default delay, not measured yet
+    ret.steerActuatorDelay = 0.05 # 0.01 late def: 0.2 Default delay, not measured yet
 
     ret.minEnableSpeed = -1
     ret.mass = 1625. + STD_CARGO_KG
