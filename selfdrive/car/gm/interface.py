@@ -98,7 +98,7 @@ class CarInterface(CarInterfaceBase):
 
     ret.minSteerSpeed = 11 * CV.KPH_TO_MS
     ret.steerRateCost = 0.35 #0.35 def : 2.0
-    ret.steerActuatorDelay = 0.01 # def: 0.2 Default delay, not measured yet
+    ret.steerActuatorDelay = 0.2 # def: 0.2 Default delay, not measured yet
 
     ret.minEnableSpeed = -1
     ret.mass = 1625. + STD_CARGO_KG
@@ -139,13 +139,13 @@ class CarInterface(CarInterfaceBase):
       # ret.minSteerSpeed = 5 * CV.MPH_TO_MS
       ret.mass = 1616. + STD_CARGO_KG
       ret.wheelbase = 2.60096
-      ret.steerRatio = 16.8
+      ret.steerRatio = 16.85
       ret.steerRatioRear = 0.
       ret.centerToFront = 2.0828 #ret.wheelbase * 0.4 # wild guess
       tire_stiffness_factor = 1.0
       # still working on improving lateral
-      ret.steerRateCost = 0.5
-      ret.steerActuatorDelay = 0.
+      ret.steerRateCost = 0.35 # default 0.5
+      ret.steerActuatorDelay = 0.2 # default 0.
       ret.lateralTuning.pid.kpBP, ret.lateralTuning.pid.kiBP = [[10., 41.0], [10., 41.0]]
       ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.14, 0.24], [0.01, 0.021]]
       ret.lateralTuning.pid.kdBP = [0.]
@@ -191,7 +191,7 @@ class CarInterface(CarInterfaceBase):
     ret.stopAccel = 0.0 #-2.2
     ret.stoppingDecelRate = 4.0 #4.0
     ret.vEgoStopping = 0.3
-    ret.vEgoStarting = 0.23 #0.23
+    ret.vEgoStarting = 0.2 #0.23 good
     ret.stoppingControl = True
     
     ret.steerLimitTimer = 0.4
