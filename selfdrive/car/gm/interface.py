@@ -35,7 +35,7 @@ class CarInterface(CarInterfaceBase):
     v_current_kph = current_speed * CV.MS_TO_KPH
     # return params.ACCEL_MIN, params.ACCEL_MAX
     accel_max_bp = [10., 20., 30., 50., 70., 80.] #good => [10., 20., 30., 50., 70., 80.]
-    accel_max_v =[0.9, 0.95, 0.85, 0.82, 0.88, 0.9] #good => [0.9, 0.95, 0.85, 0.82, 0.87, 0.9]
+    accel_max_v =[0.9, 0.95, 0.85, 0.82, 0.875, 0.9] #good => [0.9, 0.95, 0.85, 0.82, 0.87, 0.9]
 
     return params.ACCEL_MIN, interp(v_current_kph, accel_max_bp, accel_max_v)
 
@@ -98,7 +98,7 @@ class CarInterface(CarInterfaceBase):
 
     ret.minSteerSpeed = 11 * CV.KPH_TO_MS
     ret.steerRateCost = 0.35 #0.35 def : 2.0
-    ret.steerActuatorDelay = 0.1 # 0.01 late def: 0.2 Default delay, not measured yet
+    ret.steerActuatorDelay = 0.3 # 0.01 late def: 0.2 Default delay, not measured yet
 
     ret.minEnableSpeed = -1
     ret.mass = 1625. + STD_CARGO_KG
@@ -145,7 +145,7 @@ class CarInterface(CarInterfaceBase):
       tire_stiffness_factor = 1.0
       # still working on improving lateral
       ret.steerRateCost = 0.35 # default 0.5
-      ret.steerActuatorDelay = 0.1 # default 0.
+      ret.steerActuatorDelay = 0.3 # default 0.
       ret.lateralTuning.pid.kpBP, ret.lateralTuning.pid.kiBP = [[10., 41.0], [10., 41.0]]
       ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.14, 0.24], [0.01, 0.021]]
       ret.lateralTuning.pid.kdBP = [0.]
