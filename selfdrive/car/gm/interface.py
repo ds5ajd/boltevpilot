@@ -162,7 +162,7 @@ class CarInterface(CarInterfaceBase):
       ret.lateralTuning.torque.kp = 1.0 / max_lat_accel
       ret.lateralTuning.torque.kf = 0.1919764879840985 #1.0 / max_lat_accel
       ret.lateralTuning.torque.ki = 0.009054123646805178 #0.1 / max_lat_accel
-      ret.lateralTuning.torque.friction = 0.17 #0.175 origiinal
+      ret.lateralTuning.torque.friction = 0.155 #0.175 origiinal
 
       ret.lateralTuning.torque.kd = 1.0
       ret.lateralTuning.torque.deadzone = 0.03
