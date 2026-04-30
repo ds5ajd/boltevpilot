@@ -98,7 +98,7 @@ class CarInterface(CarInterfaceBase):
 
     ret.minSteerSpeed = 11 * CV.KPH_TO_MS
     ret.steerRateCost = 0.45 #0.45 very good 0.35 def : 2.0
-    ret.steerActuatorDelay = 0.25 # 0 0.225,.01 late def: 0.2 Default delay, not measured yet
+    ret.steerActuatorDelay = 0.0 # 0 0.225,.01 late def: 0.2 Default delay, not measured yet
 
     ret.minEnableSpeed = -1
     ret.mass = 1625. + STD_CARGO_KG
@@ -162,7 +162,7 @@ class CarInterface(CarInterfaceBase):
       ret.lateralTuning.torque.kp = 1.0 / max_lat_accel
       ret.lateralTuning.torque.kf = 0.1919764879840985 #1.0 / max_lat_accel
       ret.lateralTuning.torque.ki = 0.009054123646805178 #0.1 / max_lat_accel
-      ret.lateralTuning.torque.friction = 0.155 #0.175 origiinal
+      ret.lateralTuning.torque.friction = 0.17 #0.175 origiinal
 
       ret.lateralTuning.torque.kd = 1.0
       ret.lateralTuning.torque.deadzone = 0.03
