@@ -17,9 +17,9 @@ TRAJECTORY_SIZE = 33
 # so a path offset is not needed
 PATH_OFFSET = 0.00
 if EON:
-  CAMERA_OFFSET = -0.05
+  CAMERA_OFFSET = -0.06
 elif TICI:
-  CAMERA_OFFSET = 0.04
+  CAMERA_OFFSET = -0.06
 else:
   CAMERA_OFFSET = 0.0
 
